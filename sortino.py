@@ -1,3 +1,5 @@
+"""Annualised Sortino ratio."""
+
 import numpy as np
 import yfinance as yf
 
@@ -9,7 +11,6 @@ def sortino_ratio(
     target_return: float = 0.0,     # annual minimum acceptable return (MAR)
     periods_per_year: int = 252,
 ) -> float:
-    
     """Annualised Sortino ratio for a ticker using daily returns."""
     prices = yf.Ticker(ticker).history(period=period, auto_adjust=True)["Close"]
     returns = prices.pct_change().dropna()
@@ -28,7 +29,3 @@ def sortino_ratio(
         return float("nan")
 
     return float(excess.mean() / downside_dev * np.sqrt(periods_per_year))
-
-
-
-print(f"AAPL Sortino: {sortino_ratio('AAPL', '3y', 0.04, 0.2):.2f}")

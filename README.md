@@ -4,8 +4,6 @@ A small Python toolkit for measuring the risk of stocks and using those measurem
 
 The long-term idea is a paper-trading fund that starts out split equally between its stocks, then re-weights itself according to different risk models and the combination of those models. The end goal is a dashboard where you pick any stocks and see them allocated by risk.
 
-> **Status:** early. The risk models work and the VaR-weighted portfolio is built. Beta- and Sortino-based weighting and the combined fund are next (see [Roadmap](#roadmap)).
-
 ---
 
 ## The idea
@@ -100,14 +98,6 @@ Each model is its own module with plain functions, so new models can be added wi
 - **Daily rebalancing.** Portfolio returns assume fixed weights every day, with no trading costs.
 - **Data quality.** Everything depends on Yahoo Finance through `yfinance`, which can have gaps or change without notice.
 
-## Roadmap
-
-- [x] Beta, Sortino and historical VaR / CVaR for a single ticker
-- [x] Equal-weight vs inverse-VaR portfolio
-- [ ] Weights from the beta model and the Sortino model (the exact rules are still to be decided, for example inverse-beta and Sortino-proportional)
-- [ ] Combined weights from all models, compared against the equal-weight benchmark
-- [ ] Out-of-sample testing to remove look-ahead bias
-- [ ] Dashboard: choose any stocks and see them allocated by risk
 
 ## Disclaimer
 
